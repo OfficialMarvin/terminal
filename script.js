@@ -124,3 +124,36 @@ commandInput.addEventListener('keydown', async (event) => {
     await executeCommand(command);
   }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const terminalOutput = document.querySelector('.terminal-output');
+    const commandInput = document.querySelector('#command-input');
+
+    commandInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            executeCommand(this.value);
+            this.value = '';
+        }
+    });
+
+    function executeCommand(command) {
+        const normalizedCommand = command.trim().toLowerCase();
+
+        switch (normalizedCommand) {
+            case 'play snake':
+                playSnake();
+                break;
+            case 'ls':
+                terminalOutput.textContent += '\nAvailable Games: Snake\n';
+                break;
+            default:
+                terminalOutput.textContent += `\nCommand not found: ${command}`;
+        }
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    function playSnake() {
+        terminalOutput.textContent += '\nLaunching Snake... (simplified version)\n';
+        // Implement a simple version of Snake here or call another function
+        terminalOutput.textContent += '\nGame over! Your score: 10\n';
+    }
+});
