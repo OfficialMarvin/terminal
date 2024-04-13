@@ -1,91 +1,80 @@
-* {
+body, html {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #1c1c1c;
-    color: #f0f0f0;
     font-family: 'Courier New', monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    background: black;
+    color: white;
 }
 
 .terminal {
-    width: 80%;
-    max-width: 800px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid #888;
+    margin: 10px auto;
+    padding: 10px;
+    width: 90%;
+    background: #000;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
 }
 
 .terminal-header {
-    background-color: #2d2d2d;
-    padding: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-bottom: 10px;
 }
 
 .header-buttons {
+    width: 60px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .button {
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-    margin-right: 8px;
+    display: inline-block;
 }
 
 .red {
-    background-color: #ff5f56;
+    background: #e74c3c;
 }
 
 .yellow {
-    background-color: #ffbd2e;
+    background: #f1c40f;
 }
 
 .green {
-    background-color: #27c93f;
+    background: #2ecc71;
 }
 
 .header-title {
-    font-size: 14px;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .terminal-body {
-    padding: 20px;
-    min-height: 400px;
-    max-height: 600px;
+    flex-grow: 1;
     overflow-y: auto;
 }
 
 .terminal-output {
-    white-space: pre-wrap;
-    line-height: 1.4;
+    white-space: pre;
+    font-family: 'Courier New', monospace;
 }
 
 .terminal-input {
     display: flex;
-    margin-top: 10px;
 }
 
 .prompt {
-    color: #4af626;
     margin-right: 5px;
 }
 
-#command-input {
-    background-color: transparent;
+input[type="text"] {
+    width: 100%;
+    background: none;
     border: none;
-    color: #f0f0f0;
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
-    flex-grow: 1;
+    color: white;
     outline: none;
 }
