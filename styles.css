@@ -1,80 +1,35 @@
 body, html {
-    height: 100%;
     margin: 0;
-    font-family: 'Courier New', monospace;
-    background: black;
-    color: white;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-.terminal {
-    border: 1px solid #888;
-    margin: 10px auto;
-    padding: 10px;
-    width: 90%;
-    background: #000;
-    height: 90%;
+#container {
     display: flex;
     flex-direction: column;
-}
-
-.terminal-header {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.header-buttons {
-    width: 60px;
-    display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
-.button {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.red {
-    background: #e74c3c;
-}
-
-.yellow {
-    background: #f1c40f;
-}
-
-.green {
-    background: #2ecc71;
-}
-
-.header-title {
-    flex-grow: 1;
+header {
+    background-color: #333;
+    color: white;
+    width: 100%;
+    padding: 10px 0;
     text-align: center;
 }
 
-.terminal-body {
-    flex-grow: 1;
-    overflow-y: auto;
+nav {
+    margin: 20px 0;
 }
 
-.terminal-output {
-    white-space: pre;
-    font-family: 'Courier New', monospace;
-}
-
-.terminal-input {
-    display: flex;
-}
-
-.prompt {
+nav button {
+    padding: 10px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
-input[type="text"] {
-    width: 100%;
-    background: none;
-    border: none;
-    color: white;
-    outline: none;
+main {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 80%;
 }
