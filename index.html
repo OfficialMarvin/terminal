@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marvin Jakobs' Interactive Resume</title>
+    <title>Interactive Resume - Your Name</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="container">
-        <header>
-            <h1>Marvin Jakobs' Interactive Resume</h1>
-        </header>
-        <nav>
-            <button onclick="displaySection('about')">About</button>
-            <button onclick="displaySection('skills')">Skills</button>
-            <button onclick="displaySection('experience')">Experience</button>
-            <button onclick="displaySection('projects')">Projects</button>
-            <button onclick="displaySection('contact')">Contact</button>
-            <button onclick="displayGames()">Games</button>
-        </nav>
-        <main>
-            <pre id="output"></pre>
-        </main>
-    </div>
-    <script src="script.js"></script>
+    <header>
+        <h1>Your Name</h1>
+        <p>Software Developer | Data Scientist | Game Enthusiast</p>
+    </header>
+    
+    <section id="resume">
+        <h2>Professional Summary</h2>
+        <p>Dynamic and creative software developer with extensive experience in machine learning, data analysis, and software development. Passionate about developing innovative solutions for environmental monitoring using advanced technologies like AWS SageMaker and satellite imagery analysis.</p>
+
+        <h2>Projects</h2>
+        <div>
+            <h3>Ocean Trash Detection System</h3>
+            <p>This project involved developing an automated system using AWS SageMaker to detect and analyze ocean trash from satellite images. The system processes images to identify trash, clusters detected items using HDBSCAN, and visualizes data on a 3D interactive globe using Folium.</p>
+        </div>
+
+        <div>
+            <h3>Interactive Resume with Embedded Games</h3>
+            <p>I enhanced my digital resume by integrating interactive and playable games, demonstrating my skills in JavaScript game development and my ability to merge fun with professional showcases.</p>
+        </div>
+        
+        <h2>Play Games</h2>
+        <div class="game-container">
+            <iframe src="tetris.html" title="Tetris Game"></iframe>
+            <iframe src="snake.html" title="Snake Game"></iframe>
+            <iframe src="adventure.html" title="Text-based Adventure Game"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+    </footer>
 </body>
 </html>
