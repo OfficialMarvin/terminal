@@ -1,80 +1,91 @@
-body, html {
-    height: 100%;
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1c1c1c;
+    color: #f0f0f0;
     font-family: 'Courier New', monospace;
-    background: black;
-    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .terminal {
-    border: 1px solid #888;
-    margin: 10px auto;
-    padding: 10px;
-    width: 90%;
-    background: #000;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .terminal-header {
+    background-color: #2d2d2d;
+    padding: 10px;
     display: flex;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header-buttons {
-    width: 60px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .button {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    display: inline-block;
+    margin-right: 8px;
 }
 
 .red {
-    background: #e74c3c;
+    background-color: #ff5f56;
 }
 
 .yellow {
-    background: #f1c40f;
+    background-color: #ffbd2e;
 }
 
 .green {
-    background: #2ecc71;
+    background-color: #27c93f;
 }
 
 .header-title {
-    flex-grow: 1;
-    text-align: center;
+    font-size: 14px;
 }
 
 .terminal-body {
-    flex-grow: 1;
+    padding: 20px;
+    min-height: 400px;
+    max-height: 600px;
     overflow-y: auto;
 }
 
 .terminal-output {
-    white-space: pre;
-    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    line-height: 1.4;
 }
 
 .terminal-input {
     display: flex;
+    margin-top: 10px;
 }
 
 .prompt {
+    color: #4af626;
     margin-right: 5px;
 }
 
-input[type="text"] {
-    width: 100%;
-    background: none;
+#command-input {
+    background-color: transparent;
     border: none;
-    color: white;
+    color: #f0f0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    flex-grow: 1;
     outline: none;
 }
