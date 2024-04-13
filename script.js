@@ -1,50 +1,49 @@
 const terminalOutput = document.querySelector('.terminal-output');
 const commandInput = document.getElementById('command-input');
+const gameContainer = document.getElementById('game-container');
+
+// Chip-8 Games
+const games = {
+  'PONG': 'https://this.st/pong.ch8',
+  'TETRIS': 'https://this.st/tetris.ch8',
+  'SPACE INVADERS': 'https://this.st/invaders.ch8',
+  'BRIX': 'https://this.st/brix.ch8',
+  // Add more games here
+};
 
 const resume = `
 Marvin Jakobs
-LinkedIn: linkedin.com/in/marvinjakobs Github: github.com/OfficialMarvin
-
-Education
+LinkedIn: linkedin.com/in/marvinjakobs
+Github: github.com/OfficialMarvin
+Education:
 • The Pennsylvania State University
   Data Sciences - College of Information Sciences and Technology
   Semester Abroad - Rochester Institute of Technology, Croatia
   Courses: Data Science 1-4, Computer Science 1-2, Calculus 1-2, Matrices 2, Discrete Mathematics 2, Statistics 1-3, Data Integration, and Machine Learning
-
-Skills Summary
+Skills Summary:
 • Languages: Python, R, SQL, JavaScript
 • Libraries: Sklearn, Matplotlib, Pandas, NumPy, Beautiful Soup, Git, PyTorch
 • Tools: Salesforce, RStudio, SQLite, Jupyter, Tableau
 • Soft Skills: Teamwork, Writing, Speaking, Problem-solving
-
-Employment History
+Employment History:
 • AmerisourceBergen
   Customer Relationship Management Intern
-  ◦ Worked with the IT team to export and document metadata and UI/UX for multiple permission sets in production. Gave suggestions for field and flow updates. Became proficient in Salesforce and used SQL and Excel.
-
+  ◦ Worked with the IT team to export and document metadata and UI/UX ...
 • Save the Martians NFT
   Remote Community Tech Manager
-  ◦ Was responsible for tasks such as automating and maintaining bots, providing cross-chain support, web development, creating multi-media, etc. Worked with people globally to create a NFT with fun utility.
-
+  ◦ Was responsible for tasks such as automating ...
 • College of IST, Penn State
   Remote Summer Research Assistance
-  ◦ Researched anomalies in global wildlife trade and illegal seizure data using Python tools. Cleaned and spatially clustered data to recognize patterns and modus operandi of poachers/illegal wildlife traders.
-
+  ◦ Researched anomalies ...
 • App Developer
   Remote Freelance
-  ◦ Developed and sold both iOS and Android apps. Used Unity with C sharp for Amazon, and XCode with C++ for iOS. Auctioned the rights to several apps on Flippa, used Google AdSense, and ran Instagram ads to market.
-
-Publications
-• An Analysis of Wildlife Seizure Data Distributions using Spatial Clustering:
-  Presented at Tanzania Wildlife Research Institution Conference, December 2021 (Co-authored with Faizan, Kalidindi, Mitra, and Kinyua)
-
-Top Projects
-• Blockchain Battleship: Developed a decentralized game on Ethereum with Solidity and JavaScript. Features included real-time messaging and gameplay mechanics, with a focus on smart contract security and frontend interaction via Web3.js.
-
-• Stock Trend Prediction: Utilized sentiment analysis on tweets and historical stock data to predict stock trends with a model accuracy of 51%. Implemented data processing and machine learning models in Databricks, employing VADER for sentiment analysis.
-
-• Brain Tumor Classification: Developed machine learning models for grading gliomas using imaging and genomic data, emphasizing algorithm selection and model accuracy. Used datasets from UC Irvine and TCGA, tested SVM, Random Forest, and neural networks.
-
+  ◦ Developed and sold both iOS and Android apps ...
+Publications:
+• An Analysis of Wildlife Seizure Data Distributions using Spatial Clustering ...
+Top Projects:
+• Blockchain Battleship
+• Stock Trend Prediction
+• Brain Tumor Classification
 Contact:
 - Email: mkj5388@psu.edu
 - Mobile: +1-612-298-3926
@@ -93,67 +92,33 @@ function printProjects() {
 }
 
 async function executeCommand(command) {
-  const output = document.createElement('div');
-  output.innerHTML = `<span class="prompt">$</span> ${command}`;
-  terminalOutput.appendChild(output);
-
   switch (command) {
-    case 'hello':
-      printMessage('Hello! Welcome to my interactive resume.');
-      break;
-    case 'ls':
-      printMessage('resume.txt projects games');
-      break;
-    case 'cat resume.txt':
+    case 'resume.txt':
       printResume();
       break;
-    case 'ls projects':
+    case 'projects':
       printProjects();
       break;
+    case 'ls games':
+      printMessage(Object.keys(games).join(' '));
+      break;
+    case command.startsWith('play '):
+      const gameName = command.slice(5).toUpperCase();
+      if (games[gameName]) {
+        // playGame(gameName); // Uncomment and define this function if gameplaying is intended.
+      } else {
+        printMessage('Game not found. Try "ls games" to see available games.');
+      }
+      break;
     default:
-      printMessage(`Command not found: ${command}`);
+      printMessage('Unknown command. Try "resume.txt", "projects", or "ls games".');
   }
-
-  terminalOutput.scrollTop = terminalOutput.scrollHeight;
-  commandInput.value = '';
 }
 
 commandInput.addEventListener('keydown', async (event) => {
   if (event.key === 'Enter') {
     const command = commandInput.value.trim();
+    commandInput.value = '';  // Clear the input after processing
     await executeCommand(command);
   }
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const terminalOutput = document.querySelector('.terminal-output');
-    const commandInput = document.querySelector('#command-input');
-
-    commandInput.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            executeCommand(this.value);
-            this.value = '';
-        }
-    });
-
-    function executeCommand(command) {
-        const normalizedCommand = command.trim().toLowerCase();
-
-        switch (normalizedCommand) {
-            case 'play snake':
-                playSnake();
-                break;
-            case 'ls':
-                terminalOutput.textContent += '\nAvailable Games: Snake\n';
-                break;
-            default:
-                terminalOutput.textContent += `\nCommand not found: ${command}`;
-        }
-        terminalOutput.scrollTop = terminalOutput.scrollHeight;
-    }
-
-    function playSnake() {
-        terminalOutput.textContent += '\nLaunching Snake... (simplified version)\n';
-        // Implement a simple version of Snake here or call another function
-        terminalOutput.textContent += '\nGame over! Your score: 10\n';
-    }
 });
