@@ -94,6 +94,51 @@ def main():
             break
         else:
             print("Unknown command. Type 'ls' for a list of commands.")
+document.addEventListener('DOMContentLoaded', () => {
+    setupGreeting();
+    setupSmoothScrolling();
+    setupDetailToggles();
+});
+
+function setupGreeting() {
+    const hour = new Date().getHours();
+    const greeting = document.getElementById('greeting');
+    if (hour < 12) {
+        greeting.innerText = 'Good morning!';
+    } else if (hour < 18) {
+        greeting.innerText = 'Good afternoon!';
+    } else {
+        greeting.innerText = 'Good evening!';
+    }
+}
+
+function setupSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+}
+
+function setupDetailToggles() {
+    const buttons = document.querySelectorAll('.details-button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const details = button.nextElementSibling;
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+                button.innerText = 'Show Details';
+            } else {
+                details.style.display = 'block';
+                button.innerText = 'Hide Details';
+            }
+        });
+    });
+}
+
 
 if __name__ == "__main__":
     main()
