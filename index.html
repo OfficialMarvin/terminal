@@ -1,29 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Resume - Terminal Games</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Resume - Terminal</title>
+  <style>
+    /* Add some terminal-like styles */
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: black;
+      color: #00FF00;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #terminal {
+      padding: 20px;
+      height: calc(100vh - 40px);
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+
+    #prompt {
+      display: flex;
+      align-items: center;
+    }
+
+    #prompt::before {
+      content: "$ ";
+      color: #00FF00;
+    }
+
+    #input {
+      background-color: transparent;
+      color: #00FF00;
+      border: none;
+      outline: none;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <div class="terminal">
-        <div class="terminal-header">
-            <div class="header-buttons">
-                <span class="button red"></span>
-                <span class="button yellow"></span>
-                <span class="button green"></span>
-            </div>
-            <div class="header-title">Interactive Resume - Terminal Games</div>
-        </div>
-        <div class="terminal-body">
-            <div class="terminal-output"></div>
-            <div class="terminal-input">
-                <span class="prompt">$</span>
-                <input type="text" id="command-input" autofocus>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
+  <div id="terminal">
+    <pre>
+     _   _      _ _        __        __         _     _ 
+    | | | | ___| | | ___   \ \      / /__  _ __| | __| |
+    | |_| |/ _ \ | |/ _ \   \ \ /\ / / _ \| '__| |/ _` |
+    |  _  |  __/ | | (_) |   \ V  V / (_) | |  | | (_| |
+    |_| |_|\___|_|_|\___/     \_/\_/ \___/|_|  |_|\__,_|
+                                                       
+    Welcome to the Interactive Resume Terminal!
+
+    Type 'ls' or 'help' to get started.
+    </pre>
+  </div>
+  <div id="prompt">
+    <input type="text" id="input" placeholder="Enter command" autofocus>
+  </div>
+
+  <script>
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('input');
+
+    // Define your terminal commands
+    const commands = {
+      ls: () => {
+        terminal.innerHTML += '\n\nAvailable commands:\n- ls\n- about\n- skills\n- experience\n- contact\n- help';
+      },
+      about: () => {
+        terminal.innerHTML += '\n\nHello! My name is Marvin Jakobs, and I am a marketing professional with a passion for web development. I hold a Master\'s degree in Business Administration and have over 5 years of experience in the industry.';
+      },
+      skills: () => {
+        terminal.innerHTML += '\n\nMy key skills include:\n- Marketing strategy and research\n- Digital marketing (SEO, SEM, PPC)\n- Content creation and management\n- Project management\n- Strong communication and presentation abilities';
+      },
+      experience: () => {
+        terminal.innerHTML += '\n\nMy professional experience includes:\n- Marketing Coordinator at XYZ Company (2019 - 2021)\n- Digital Marketing Specialist at ABC Agency (2021 - present)';
+      },
+      contact: () => {
+        terminal.innerHTML += '\n\nYou can reach me at:\nEmail: marvin.jakobs@example.com\nLinkedIn: linkedin.com/in/marvinjakobs';
+      },
+      help: () => {
+        terminal.innerHTML += '\n\nAvailable commands:\n- ls\n- about\n- skills\n- experience\n- contact\n- help';
+      }
+    };
+
+    input.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        const command = input.value.toLowerCase();
+        input.value = '';
+
+        if (commands[command]) {
+          commands[command]();
+        } else {
+          terminal.innerHTML += `\n\nCommand '${command}' not found. Type 'help' to see a list of available commands.`;
+        }
+
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+    });
+  </script>
 </body>
 </html>
