@@ -74,7 +74,7 @@ async function executeCommand(command) {
             printMessage('Hello! Welcome to my interactive resume.');
             break;
         case 'ls':
-            printMessage('resume.txt projects games');
+            printMessage('resume.txt, projects, games');
             break;
         case 'cat resume.txt':
             printMessage('Marvin Jakobs');
