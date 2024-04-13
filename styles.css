@@ -1,37 +1,80 @@
 body, html {
     height: 100%;
     margin: 0;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #000;
-    color: #0f0;
+    font-family: 'Courier New', monospace;
+    background: black;
+    color: white;
 }
 
 .terminal {
-    padding: 20px;
+    border: 1px solid #888;
+    margin: 10px auto;
+    padding: 10px;
+    width: 90%;
+    background: #000;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
 }
 
-#ascii-header {
-    margin: 10px 0;
+.terminal-header {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.header-buttons {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red {
+    background: #e74c3c;
+}
+
+.yellow {
+    background: #f1c40f;
+}
+
+.green {
+    background: #2ecc71;
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.terminal-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.terminal-output {
     white-space: pre;
-    font-size: 12px;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-input {
+    display: flex;
+}
+
+.prompt {
+    margin-right: 5px;
 }
 
 input[type="text"] {
     width: 100%;
-    background-color: #333;
-    color: #0f0;
+    background: none;
     border: none;
-    padding: 10px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.game-hidden {
-    display: none;
-}
-
-#gameCanvas {
-    width: 100%;
-    height: 400px;
-    background-color: #333;
-    margin-top: 20px;
+    color: white;
+    outline: none;
 }
