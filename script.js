@@ -138,7 +138,39 @@ function setupDetailToggles() {
         });
     });
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('commandInput');
+    const resumeSection = document.querySelector('.resume');
+    const gameCanvas = document.getElementById('gameCanvas');
 
+    input.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            handleCommand(this.value);
+            this.value = '';
+        }
+    });
+
+    function handleCommand(command) {
+        switch (command.trim().toLowerCase()) {
+            case 'help':
+                resumeSection.innerHTML = '<p>Commands:<br>- "help": Show this help message<br>- "game": Start the game</p>';
+                gameCanvas.classList.add('game-hidden');
+                break;
+            case 'game':
+                resumeSection.innerHTML = '<p>Use the arrow keys to control the game.</p>';
+                gameCanvas.classList.remove('game-hidden');
+                startGame();
+                break;
+            default:
+                resumeSection.innerHTML = '<p>Unknown command. Type "help" for a list of commands.</p>';
+                gameCanvas.classList.add('game-hidden');
+        }
+    }
+
+    function startGame() {
+        gameCanvas.innerHTML = '<p>Game would go here.</p>';
+    }
+});
 
 if __name__ == "__main__":
     main()
