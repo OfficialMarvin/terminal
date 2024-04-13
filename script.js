@@ -86,4 +86,4 @@ commandInput.addEventListener('keydown', (event) => {
 
 // Display initial welcome message
 printMessage('Welcome to the interactive resume of Marvin Jakobs!');
-printMessage('Type "help" or "?" to see available commands.');
+printMessage('Type "help" or "?" to see available commands.'); 
