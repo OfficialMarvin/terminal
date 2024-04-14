@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Resume - Terminal Games</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: monospace;
+        }
+        .terminal {
+            max-width: 600px;
+            padding: 20px;
+        }
+        .terminal-input {
+            display: flex;
+            align-items: center;
+        }
+        .prompt {
+            color: #0f0;
+            margin-right: 5px;
+        }
+        #command-input {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+            font-family: monospace;
+        }
+    </style>
 </head>
 <body>
     <div class="terminal">
@@ -24,27 +55,9 @@
             <p>Type 'help' for a list of commands.</p>
             <p>Type 'game' to play the embedded game.</p>
         </section>
-        <input type="text" id="commandInput" placeholder="Enter command here...">
-    </div>
-    <div id="gameCanvas" class="game-hidden"></div>
-    <script src="script.js"></script>
-</body>
-</html>
-    <div class="terminal">
-        <div class="terminal-header">
-            <div class="header-buttons">
-                <span class="button red"></span>
-                <span class="button yellow"></span>
-                <span class="button green"></span>
-            </div>
-            <div class="header-title">Interactive Resume - Terminal Games</div>
-        </div>
-        <div class="terminal-body">
-            <div class="terminal-output"></div>
-            <div class="terminal-input">
-                <span class="prompt">$</span>
-                <input type="text" id="command-input" autofocus>
-            </div>
+        <div class="terminal-input">
+            <span class="prompt">$</span>
+            <input type="text" id="commandInput" placeholder="Enter command here...">
         </div>
     </div>
     <script src="script.js"></script>
